@@ -22,7 +22,6 @@
 
 .autoComplete_wrapper > ul {
     position: absolute;
-    max-height: 226px;
     max-width: 350px;
     overflow-y: hidden;
     left: 0;
