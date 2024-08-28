@@ -744,9 +744,8 @@ export function fichierValide(file, controle) {
 export function donneesValides(zone = document) {
     let valide = true;
 
-    // Sélectionner tous les éléments input et select qui ne sont pas désactivés
-    // remarque : les balises textarea ne peuvent être incluses car, elles ne possèdent pas l'attribut pattern ni minLength ni maxLength
-    const lesInputs = zone.querySelectorAll('input:not([disabled]), select:not([disabled])');
+    // Sélectionner tous les éléments input et select qui sont required et non désactivés
+    const lesInputs = zone.querySelectorAll('input[required]:not([disabled]), select[required]:not([disabled])');
 
     // Parcourir et traiter les éléments sélectionnés
     lesInputs.forEach(x => {
@@ -755,9 +754,20 @@ export function donneesValides(zone = document) {
             valide = false;
         }
     });
+
+    // Vérifier séparément les champs non-required qui ont une valeur
+    const champsNonRequired = zone.querySelectorAll('input:not([required]):not([disabled]), select:not([required]):not([disabled])');
+    champsNonRequired.forEach(x => {
+        if (x.value !== '') {
+            afficherErreurSaisie(x.id);
+            if (!x.checkValidity()) {
+                valide = false;
+            }
+        }
+    });
+
     return valide;
 }
-
 /**
  * Contrôle qu'au moins une propriété de l'objet a été modifiée sur l'interface
  * chaque propriété de l'objet est normalement associé à un champ via l'attribut id
