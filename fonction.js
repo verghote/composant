@@ -1024,9 +1024,13 @@ export const enleverAccent = (valeur) => valeur.normalize('NFD').replace(/[\u030
  * @return {string} avec la première lettre de chaque mot en majuscule
  */
 export function ucWord(nom) {
-    const lesMots = nom.trim().toLowerCase().split(/[\s-]+/);
+    const lesMots = nom.trim().toLowerCase().split(/[\s]+/);
     for (let i = 0; i < lesMots.length; i += 1) {
-        lesMots[i] = lesMots[i].charAt(0).toUpperCase() + lesMots[i].slice(1);
+        const lesSousMots = lesMots[i].split('-');
+        for (let j = 0; j < lesSousMots.length; j += 1) {
+            lesSousMots[j] = lesSousMots[j].charAt(0).toUpperCase() + lesSousMots[j].slice(1);
+        }
+        lesMots[i] = lesSousMots.join('-');
     }
     return lesMots.join(' ');
 }
