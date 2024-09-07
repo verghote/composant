@@ -6,7 +6,7 @@
  * bibliothèque de fonctions facilitant la saisie, la conversion et la mise en forme
  *
  * @Author : Guy Verghote
- * @Version 2.11 19/07/2024
+ * @Version 2.0.1 07/09/2024
  */
 
 // -----------------------------------------------------------
@@ -1024,7 +1024,7 @@ export const enleverAccent = (valeur) => valeur.normalize('NFD').replace(/[\u030
  * @return {string} avec la première lettre de chaque mot en majuscule
  */
 export function ucWord(nom) {
-    const lesMots = nom.trim().toLowerCase().split(' ');
+    const lesMots = nom.trim().toLowerCase().split(/[\s-]+/);
     for (let i = 0; i < lesMots.length; i += 1) {
         lesMots[i] = lesMots[i].charAt(0).toUpperCase() + lesMots[i].slice(1);
     }
