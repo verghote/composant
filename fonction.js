@@ -807,6 +807,7 @@ export function dateValide(idInput) {
         // Vérifier le format jj/mm/aaaa avec une expression régulière
         const dateRegex = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
         if (!dateRegex.test(input.value)) {
+            afficherErreurSaisie(idInput, 'Cette date ne respecte pas le format attendu (jj/mm/aaaa)');
             return false; // Le format n'est pas correct
         }
 
