@@ -6,7 +6,7 @@
  * bibliothèque de fonctions facilitant la saisie, la conversion et la mise en forme
  *
  * @Author : Guy Verghote
- * @Version 2.0.1 07/09/2024
+ * @Version 2.0.2 08/09/2024
  */
 
 // -----------------------------------------------------------
@@ -805,7 +805,7 @@ export function dateValide(idInput) {
 
     if (input) {
         // Vérifier le format jj/mm/aaaa avec une expression régulière
-        const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+        const dateRegex = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
         if (!dateRegex.test(input.value)) {
             return false; // Le format n'est pas correct
         }
