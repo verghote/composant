@@ -6,7 +6,7 @@
  * bibliothèque de fonctions facilitant la saisie, la conversion et la mise en forme
  *
  * @Author : Guy Verghote
- * @Version 2.0.2 08/09/2024
+ * @Version 2.0.3 12/09/2024
  */
 
 // -----------------------------------------------------------
@@ -1184,17 +1184,17 @@ export function comparer(str1, str2) {
  * @returns {string | boolean | number | null} valeur saisie
  */
 export function read(inputId) {
-    let valeur = '';
+    let valeur;
     const input = document.getElementById(inputId);
     if (input) {
+        // s'agit-il d'une balise input ?
         if (input instanceof HTMLInputElement) {
-            // par défaut, on retourne la valeur de la balise
-            valeur = input.value;
-            // sauf pour une case à cocher ou un type number
+            // Récupération type de l'input : text, checkbox, radio, number
             const type = input.type.toLowerCase();
             if (type === 'checkbox' || type === 'radio') {
                 valeur = input.checked ? 1 : 0;
             } else if (type === 'number') {
+                // Vérifier si la valeur est un entier ou un nombre à virgule
                 const value = input.value;
                 if (Number.isInteger(value)) {
                     valeur = parseInt(value);
@@ -1203,6 +1203,12 @@ export function read(inputId) {
                 }
             } else {
                 valeur = input.value.trim();
+                // détermination du type de la valeur
+                if (valeur === '') {
+                    valeur = null;
+                } else if (!isNaN(valeur)) {
+                    valeur = parseFloat(valeur);
+                }
             }
         } else if (input instanceof HTMLTextAreaElement) {
             valeur = input.value;
