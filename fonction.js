@@ -1216,6 +1216,8 @@ export function read(inputId) {
             }
         } else if (input instanceof HTMLTextAreaElement) {
             valeur = input.value;
+        } else if (input instanceof HTMLSelectElement) {
+            valeur = input.value;
             if (!isNaN(valeur)) {
                 if (Number.isInteger(valeur)) {
                     valeur = parseInt(valeur);
@@ -1223,8 +1225,6 @@ export function read(inputId) {
                     valeur = parseFloat(valeur);
                 }
             }
-        } else if (input instanceof HTMLSelectElement) {
-            valeur = input.value;
         } else {
             valeur = input.innerText;
         }
