@@ -1207,20 +1207,20 @@ export function read(inputId) {
                 if (valeur === '') {
                     valeur = null;
                 } else if (!isNaN(valeur)) {
-                    if (Number.isInteger(value)) {
-                        valeur = parseInt(value);
+                    if (Number.isInteger(valeur)) {
+                        valeur = parseInt(valeur);
                     } else {
-                        valeur = parseFloat(value);
+                        valeur = parseFloat(valeur);
                     }
                 }
             }
         } else if (input instanceof HTMLTextAreaElement) {
             valeur = input.value;
             if (!isNaN(valeur)) {
-                if (Number.isInteger(value)) {
-                    valeur = parseInt(value);
+                if (Number.isInteger(valeur)) {
+                    valeur = parseInt(valeur);
                 } else {
-                    valeur = parseFloat(value);
+                    valeur = parseFloat(valeur);
                 }
             }
         } else if (input instanceof HTMLSelectElement) {
