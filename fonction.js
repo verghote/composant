@@ -1519,6 +1519,46 @@ export function getDateCourante() {
 }
 
 /**
+ * retourne la date courante dans le format jj/mm/aaaa
+ * @param dateIso
+ * @returns {string}
+ */
+export function convertirDateIsoEnDateFr(dateIso) {
+    return dateIso.split('-').reverse().join('/');
+}
+
+/**
+ * Convertit une date au format jj/mm/aaaa en une date au format aaaa-mm-jj
+ * @param dateFr
+ * @returns {string}
+ */
+export function convertirDateFrEnDateIso(dateFr) {
+    return dateFr.split('/').reverse().join('-');
+}
+
+/**
+ * Convertit une date et une heure au format ISO en une date et une heure au format français
+ * @param dateHeureIso
+ * @returns {string}
+ */
+export function convertirDateHeureIsoEnDateHeureFr(dateHeureIso) {
+    // Séparer la date et l'heure
+    const [datePart, timePart] = dateHeureIso.split('T');
+
+    // Formater la date
+    const [year, month, day] = datePart.split('-');
+    const formattedDate = `${day.padStart(2, '0')}/${month.padStart(2, '0')}/${year}`;
+
+    // Formater l'heure
+    const [hours, minutes, seconds] = timePart.split(':');
+    const formattedTime = `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}`;
+
+    // Retourner la date et l'heure formatées
+    return `${formattedDate} à ${formattedTime}`;
+}
+
+
+/**
  * retourne le message d'erreur associé à la réponse de l'API
  * @param reponse
  * @returns {string}
