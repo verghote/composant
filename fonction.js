@@ -6,7 +6,7 @@
  * bibliothèque de fonctions facilitant la saisie, la conversion et la mise en forme
  *
  * @Author : Guy Verghote
- * @Version 2.0.3 12/09/2024
+ * @Version 2.0.4 29/10/2024
  */
 
 // -----------------------------------------------------------
@@ -1516,4 +1516,19 @@ export function getSaison(date, mois = 9) {
 export function getDateCourante() {
     const date = new Date();
     return date.toISOString().split('T')[0];
+}
+
+/**
+ * retourne le message d'erreur associé à la réponse de l'API
+ * @param reponse
+ * @returns {string}
+ */
+export function getErrorAPI(reponse) {
+    if (reponse === "Not Found") return "Le point d'accès appelé n'existe pas";
+    if (reponse === "Bad credentials") return "Vos paramètres d'authentification sont incorrects";
+    if (reponse === "Requires authentication") return "Votre demande nécessite une authentification";
+    if (reponse === "Repository creation failed.") return "La création du référentiel a échoué";
+    if (reponse === "name already exists on this account") return "Ce référentiel existe déjà";
+    if (reponse === "Body should be a JSON object") return "Votre demande ne comporte pas les paramètres attendus";
+    return "Echec de la demande";
 }
