@@ -587,9 +587,7 @@ export function configurerFormulaire(onInput = false) {
         const div = document.createElement('div');
         div.classList.add('messageErreur');
         input.insertAdjacentElement('afterend', div);
-        input.addEventListener('input', () => {
-            input.nextElementSibling.innerText = '';
-        });
+
         // Ajout d'un écouteur d'événement sur l'événement input pour signaler l'erreur après chaque caractère saisi
         if (onInput) {
             input.addEventListener('input', () => {
