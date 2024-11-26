@@ -472,13 +472,14 @@ export async function corrigerInput(input) {
 /**
  * Demande de confirmation avant de lancer un traitement
  * @param {function} callback pointeur sur la fonction à lancer
+ * @param {string} message message à afficher
  */
-export async function confirmer(callback) {
+export async function confirmer(callback, message = '') {
     if (typeof Noty === 'undefined') {
         await loadNoty();
     }
     const n = new Noty({
-        text: 'Confirmer votre demande ',
+        text: message === '' ? 'Confirmer votre demande ' : message,
         layout: 'center',
         theme: 'sunset',
         modal: true,
