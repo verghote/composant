@@ -598,6 +598,17 @@ export function configurerFormulaire(onInput = false) {
     }
 }
 
+
+/**
+ * @param {Node} [zone=document] - La zone dans laquelle les champs doivent être contrôlés.
+ */
+export function effacerDonneesSaisies(zone = document) {
+    // remarque : les balises select ne sont pas incluses
+    for (const input of zone.querySelectorAll('input, textarea')) {
+        input.value = '';
+    }
+}
+
 /**
  * Affiche un message d'erreur de saisie à côté de l'élément d'entrée spécifié.
  *
@@ -738,6 +749,7 @@ export function fichierValide(file, controle) {
 /**
  * Contrôle tous les champs input et textarea et select
  * chaque champ xxx doit être suivi d'une balise <div class='messageErreur'></div> pour afficher le message d'erreur : méthode configurerFormulaire
+ * @param {Node} [zone=document] - La zone dans laquelle les champs doivent être contrôlés.
  * @returns {boolean} true si tous les champs respectent les contraintes définies dans leurs attributs pattern, minlength, maxlength, required, min, max ...
  */
 export function donneesValides(zone = document) {
@@ -767,6 +779,9 @@ export function donneesValides(zone = document) {
 
     return valide;
 }
+
+
+
 /**
  * Contrôle qu'au moins une propriété de l'objet a été modifiée sur l'interface
  * chaque propriété de l'objet est normalement associé à un champ via l'attribut id
