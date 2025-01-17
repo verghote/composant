@@ -9,29 +9,28 @@ Tous les projets faisant référence à ce référentiel seront ainsi automatiqu
 
 Pour rendre accessible les fichiers de ce référentiel dans un projet, le service GitHub Pages a été utilisé.
 Ainsi, les fichiers de ce référentiel sont accessibles à l'adresse suivante : https://verghote.github.io/composants/
-ou en utilisant le CDN suivant : https://cdn.jsdelivr.net/gh/verghote/composants/
 
 ## Chargement des composants dans un projet
 
 * bootstrap
-  *  echo file_get_contents('https://cdn.jsdelivr.net/gh/verghote/composant/bootstrap.html');
+  *  echo file_get_contents('https://verghote.github.io/composant/bootstrap.html');
 * jQuery
-  *  echo file_get_contents('https://cdn.jsdelivr.net/gh/verghote/composant/jquery.html');
+  *  echo file_get_contents('https://verghote.github.io/composant/jquery.html');
 * DataTables
-  *  $head .= file_get_contents('https://cdn.jsdelivr.net/gh/verghote/composant/datatables.html');
+  *  $head .= file_get_contents('https://verghote.github.io/composant/datatables.html');
 * tablesorter
-    *  $head .= file_get_contents('https://cdn.jsdelivr.net/gh/verghote/composant/tablesorter.html');
+    *  $head .= file_get_contents('https://verghote.github.io/composant/tablesorter.html');
 * autocomplete2 (auto complétion sans jQuery)
-    *  $head .= file_get_contents('https://cdn.jsdelivr.net/gh/verghote/composant/autocomplete2.html');
+    *  $head .= file_get_contents('https://verghote.github.io/composant/autocomplete2.html');
 * autocomplete (auto complétion avec jQuery)
-    *  $head .= file_get_contents('https://cdn.jsdelivr.net/gh/verghote/composant/autocomplete.html');
+    *  $head .= file_get_contents('https://verghote.github.io/composant/autocomplete.html');
 * CkEditor (version 4 standard)
-    *  $head .= file_get_contents('https://cdn.jsdelivr.net/gh/verghote/composant/ckeditor.html');
+    *  $head .= file_get_contents('https://verghote.github.io/composant/ckeditor.html');
 * CkEditor (version 5 standard)
-    * $head .= file_get_contents('https://cdn.jsdelivr.net/gh/verghote/composant/ckeditor5.html');
+    * $head .= file_get_contents('https://verghote.github.io/composant/ckeditor5.html');
 * CkEditor (version 4 personnalisée)
-    * $head .= "<script src='https://cdn.jsdelivr.net/gh/verghote/composant/ckeditor/ckeditor.js'></script>";
+    * $head .= "<script src='https://verghote.github.io/composant/ckeditor/ckeditor.js'></script>";
 * dompurify
-    * $head .= file_get_contents('https://cdn.jsdelivr.net/gh/verghote/composant/dompurify.html');
+    * $head .= file_get_contents('https://verghote.github.io/composant/dompurify.html');
 * module ES6 (ECMAScript 2015) fonction.js 
-    * import {afficherErreur, afficherSucces} from "https://cdn.jsdelivr.net/gh/verghote/composant/fonction.js";
+    * import {afficherErreur, afficherSucces} from "https://verghote.github.io/composant/fonction.js";
