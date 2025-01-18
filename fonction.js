@@ -71,7 +71,7 @@ export function afficherDansConsole(reponse) {
         KEEP_CONTENT: true // Conserver le contenu des balises non autorisées
     };
     let message = DOMPurify.sanitize(reponse, config);
-    console.log(reponse.responseText);
+    console.log(message);
 }
 
 /**
