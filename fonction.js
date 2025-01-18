@@ -6,7 +6,7 @@
  * bibliothèque de fonctions facilitant la saisie, la conversion et la mise en forme
  *
  * @Author : Guy Verghote
- * @Version 2.0.4 29/10/2024
+ * @Version 2.1 18/01/2025
  */
 
 // -----------------------------------------------------------
@@ -60,6 +60,19 @@ export async function loadNoty() {
 // -----------------------------------------------------------
 // Fonctions d'affichage
 // ------------------------------------------------------------
+
+/**
+ * Affiche le contenu de la réponse dans la console en ayant retiré toutes les balises HTML
+ * @param reponse
+ */
+export function afficherDansConsole(reponse) {
+    let config = {
+        ALLOWED_TAGS: [], // Liste des balises autorisées
+        KEEP_CONTENT: true // Conserver le contenu des balises non autorisées
+    };
+    let message = DOMPurify.sanitize(reponse, config);
+    console.log(reponse.responseText);
+}
 
 /**
  * Génération d'un message dans une mise en forme bootstrap (class='alert-dismissible')
