@@ -6,8 +6,8 @@
  * bibliothèque de fonctions facilitant la saisie, la conversion et la mise en forme
  *
  * @Author : Guy Verghote
- * @Version 2025.1
- * @Date : 2025-05-03
+ * @Version 2025.2
+ * @Date : 2025-05-04
  */
 
 // -----------------------------------------------------------
