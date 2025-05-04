@@ -1638,3 +1638,56 @@ export function getErrorAPI(reponse) {
     if (reponse === "Body should be a JSON object") return "Votre demande ne comporte pas les paramètres attendus";
     return "Echec de la demande";
 }
+
+/**
+ * Remplace $.ajax(...) par un appel fetch moderne avec async/await.
+ * @param {Object} options - options de la requête
+ * @param {string} options.url - URL cible
+ * @param {string} [options.method='GET'] - Méthode HTTP (GET, POST)
+ * @param {Object|FormData} [options.data] - Données à envoyer
+ * @param {function} [options.success] - Fonction callback en cas de succès
+ * @param {function} [options.error] - Fonction callback en cas d’échec
+ */
+export async function ajax(options) {
+    const {
+        url,
+        method = 'GET',
+        data,
+        success = () => {},
+        error = () => {}
+    } = options;
+
+    let fetchOptions = {
+        method
+    };
+
+    // Construction du body et headers selon la méthode et la nature des données
+    if (method.toUpperCase() === 'POST') {
+        if (data instanceof FormData) {
+            fetchOptions.body = data;
+        } else if (data && typeof data === 'object') {
+            fetchOptions.headers = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            };
+            fetchOptions.body = new URLSearchParams(data);
+        }
+    } else if (method.toUpperCase() === 'GET' && data && typeof data === 'object') {
+        const params = new URLSearchParams(data).toString();
+        options.url += (url.includes('?') ? '&' : '?') + params;
+    }
+
+    try {
+        const response = await fetch(url, fetchOptions);
+        if (!response.ok) throw response;
+        const json = await response.json();
+        success(json);
+    } catch (reponse) {
+        let texte;
+        try {
+            texte = await reponse.text();
+        } catch (e) {
+            texte = 'Erreur inconnue';
+        }
+        error(reponse, texte);
+    }
+}
